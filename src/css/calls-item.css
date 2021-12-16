@@ -1,0 +1,56 @@
+.calls-item{ 
+	margin-top: 2em;
+}
+
+.call {
+	display: flex;
+	padding: 1em 0 1em 1em;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid #cecece;
+	border-radius: 15px;
+}
+
+.call-icon {
+	margin-right: 1em;
+}
+
+.call-direction {
+	display: flex;
+	align-items: center;
+}
+
+.call-end {
+	display: flex;
+	align-items: center;
+	width: 20%;
+	justify-content: space-between;
+}
+
+.callers {
+	height: 3em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.callers > p {
+	margin: 0;
+}
+
+.am-pm {
+	border-top: 1px solid #cecece;
+	border-left: 1px solid #cecece;
+	border-bottom: 1px solid #cecece;
+	font-size: 0.8em;
+	font-weight: bold;
+	color: #8a8a8a;
+	padding: 2px 3px;
+	border-radius: 2px 0px 0px 2px;
+}
+
+.time {
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #8a8a8a;
+}

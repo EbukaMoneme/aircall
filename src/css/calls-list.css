@@ -1,0 +1,9 @@
+.calls-list {
+	height: 550px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+::-webkit-scrollbar {
+	width: 0;  /* Remove scrollbar space */
+	background: transparent;  /* Optional: just make scrollbar invisible */
+}
