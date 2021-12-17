@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import Options from './Buttons/Options.jsx';
 
 const CallsItem = (props) => {
 	const { call_type, created_at, direction, duration, from, id, is_archived, to, via } = props;
@@ -16,7 +17,8 @@ const CallsItem = (props) => {
 					</div>
 				</div>
 				<div className='call-end'>
-					<i className="fas fa-ellipsis-v options"></i>
+					{/* <i className="fas fa-ellipsis-v options"></i> */}
+					<Options/>
 					<div className='time'>{time[0]}</div>
 					<div className='am-pm'>{time[1]}</div>
 				</div>
