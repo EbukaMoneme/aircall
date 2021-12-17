@@ -22,7 +22,7 @@ const CallsItem = (props) => {
 				</div>
 			</div>
 
-			Type: {call_type}
+			{/* Type: {call_type}
 			<br></br>
 			Created: {created_at}
 			<br></br>
@@ -38,7 +38,7 @@ const CallsItem = (props) => {
 			<br></br>
 			To: {to}
 			<br></br>
-			via: {via}	
+			via: {via}	 */}
 
 		</div>
 	)
