@@ -7,3 +7,19 @@
 	width: 0;  /* Remove scrollbar space */
 	background: transparent;  /* Optional: just make scrollbar invisible */
 }
+
+
+.date-line {
+	width: 30%;
+	height: 0;
+	border-top: 1px dashed #cecece;
+}
+
+.date {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	font-weight: bold;
+	color: #cecece;
+	margin-bottom: -1.5em;
+}

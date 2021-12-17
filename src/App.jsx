@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import CallsList from './Components/CallsList.jsx';
 
@@ -24,8 +25,11 @@ const App = () => {
     <div className='container'>
       <Header/>
       <div className="container-view">
-				{/* Some activities should be here */}
-				<CallsList calls={state.calls}/>
+				<Routes>
+					<Route path="/" element={<CallsList calls={state.calls} view={'regular'}/>} />
+					<Route path="/missed" element={<CallsList calls={state.calls} view={'missed'}/>} />
+					<Route path="/archived" element={<CallsList calls={state.calls} view={'archived'}/>} />
+				</Routes>
 			</div>
     </div>
   );

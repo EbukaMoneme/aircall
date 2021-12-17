@@ -1,14 +1,15 @@
 .calls-item{ 
-	margin-top: 2em;
+	/* margin-top: 2em; */
 }
 
 .call {
 	display: flex;
-	padding: 1em 0 1em 1em;
+	padding: 0.75em 0.1em 0.75em 0.75em;
 	align-items: center;
 	justify-content: space-between;
 	border: 1px solid #cecece;
 	border-radius: 15px;
+	margin-top: 1.5em;
 }
 
 .call-icon {
@@ -50,7 +51,12 @@
 }
 
 .time {
-	font-size: 0.9em;
+	margin-right: 0.3em;
 	font-weight: bold;
 	color: #8a8a8a;
+}
+.options {
+	/* font-size: 0.8em; */
+	color: #8a8a8a;
+	margin-right: 0.3em;
 }
