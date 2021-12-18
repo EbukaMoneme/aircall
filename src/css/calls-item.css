@@ -26,6 +26,7 @@
 	align-items: center;
 	width: 20%;
 	justify-content: space-between;
+	color: #8a8a8a;
 }
 
 .callers {
@@ -45,20 +46,48 @@
 	border-bottom: 1px solid #cecece;
 	font-size: 0.8em;
 	font-weight: bold;
-	color: #8a8a8a;
+	/* color: #8a8a8a; */
 	padding: 2px 3px;
 	border-radius: 2px 0px 0px 2px;
 }
 
 .time {
-	margin-right: 0.3em;
+	margin: 0 0.3em;
 	font-weight: bold;
-	color: #8a8a8a;
+	/* color: #8a8a8a; */
 }
 
 
+.options-icon {
+	/* color: #8a8a8a; */
+}
+
 .options {
-	/* font-size: 0.8em; */
-	color: #8a8a8a;
-	margin-right: 0.3em;
+	display: flex;
+	flex-direction: column;
+}
+
+.dropdown {
+	background-color: transparent;
+	/* padding: 0.5em; */
+	/* width: 5em; */
+	position: absolute;
+	margin: 1.4em 0em 0 0;
+}
+
+.archive {
+	padding: 0.35em 0.6em;
+	border: 0.1em solid orange;
+	border-radius: 25px;
+	background-color: white;
+
+	font-weight:300;
+	color:#000;
+	text-align:center;
+	transition: all 0.2s;
+}
+
+.archive:hover{
+	color: white;
+	background-color:orange;
 }

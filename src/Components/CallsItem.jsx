@@ -1,11 +1,50 @@
 import React from 'react';
 import moment from 'moment';
 import Options from './Buttons/Options.jsx';
+import axios from 'axios';
 
 const CallsItem = (props) => {
-	const { call_type, created_at, direction, duration, from, id, is_archived, to, via } = props;
+	const { 
+		call_type, 
+		created_at, 
+		direction, 
+		duration, 
+		from, 
+		id, 
+		is_archived, 
+		to, 
+		via, 
+		calls, 
+		setState 
+	} = props;
+
 	console.log(props.is_archived)
 	const time = moment(created_at).format('LT').split(' ');
+
+	const archiveCall = () => {
+		console.log(calls)
+		const toArchive = calls.filter(call => call.id === id)[0]
+		const index = calls.indexOf(toArchive);
+
+		const alteredCall = [...calls][index]
+		alteredCall.is_archived = !alteredCall.is_archived;
+		const alteredCalls = calls;
+		alteredCalls[index] = alteredCall
+
+		setState(prev => ({...prev, calls: alteredCalls}));
+		updateCall(!is_archived)
+	}
+
+	const updateCall = (archive_status) => {
+		axios.post(`https://aircall-job.herokuapp.com/activities/${id}`, {
+			is_archived: archive_status
+		})
+			.then((res) => {
+				console.log(res)
+			})
+			.catch(err => console.log("Failed because:", err))
+	}
+
 	return (
 		<div className='calls-item'>
 			<div className='call'>
@@ -17,8 +56,7 @@ const CallsItem = (props) => {
 					</div>
 				</div>
 				<div className='call-end'>
-					{/* <i className="fas fa-ellipsis-v options"></i> */}
-					<Options/>
+					<Options is_archived={is_archived} archiveCall={archiveCall}/>
 					<div className='time'>{time[0]}</div>
 					<div className='am-pm'>{time[1]}</div>
 				</div>

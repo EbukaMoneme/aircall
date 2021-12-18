@@ -3,7 +3,7 @@ import CallsItem from "./CallsItem.jsx";
 import moment from 'moment';
 
 const CallsList = (props) => {
-	const { calls, view } = props;
+	const { calls, view, setState } = props;
 
 	const callView = (view) => {
 		let filter;
@@ -21,13 +21,14 @@ const CallsList = (props) => {
 
 	const filteredCalls = callView(view)
 	console.log(filteredCalls)
+	console.log("unfiltered", calls)
 
 	const formatDate = (date) => {
 		return moment(date).format("ll")
 	}
 	
 	const uniqueDates = [...new Set(filteredCalls.map(call => formatDate(call.created_at)))]
-	const parsedCallsList = filteredCalls.map((call, index) => <CallsItem {...call} key={index} />);
+	const parsedCallsList = filteredCalls.map((call, index) => <CallsItem {...call} setState={setState} calls={calls} key={index} />);
 
 	const createDateElement = (date) => {
 		return (

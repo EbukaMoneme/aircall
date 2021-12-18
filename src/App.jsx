@@ -7,15 +7,14 @@ import Header from './Header.jsx';
 
 const App = () => {
 	const [state, setState] = useState({
-		calls: [],
-		archived_calls: []
+		calls: []
 	})
 
 	useEffect(() => {
 		axios.get('https://aircall-job.herokuapp.com/activities')
 			.then((res) => {
-				setState(() => ({
-					calls: [...res.data], archived_calls: []
+				setState((prev) => ({
+					...prev, calls: [...res.data]
 				}))
 			})
 	}, [])
@@ -26,9 +25,9 @@ const App = () => {
       <Header/>
       <div className="container-view">
 				<Routes>
-					<Route path="/" element={<CallsList calls={state.calls} view={'regular'}/>} />
-					<Route path="/missed" element={<CallsList calls={state.calls} view={'missed'}/>} />
-					<Route path="/archived" element={<CallsList calls={state.calls} view={'archived'}/>} />
+					<Route path="/" element={<CallsList setState={setState} calls={state.calls} view={'regular'}/>} />
+					<Route path="/missed" element={<CallsList setState={setState} calls={state.calls} view={'missed'}/>} />
+					<Route path="/archived" element={<CallsList setState={setState} calls={state.calls} view={'archived'}/>} />
 				</Routes>
 			</div>
     </div>
