@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import Options from './Buttons/Options.jsx';
+import CallDetails from './CallDetails.jsx';
+import useDisplayDetails from '../Hooks/useDisplayDetails.js';
 import axios from 'axios';
 
 const CallsItem = (props) => {
@@ -18,22 +20,21 @@ const CallsItem = (props) => {
 		setState 
 	} = props;
 
-	const [displayDetails, setDisplayDetails] = useState(false)
-
-	const toggleDetails = () => {
-		setDisplayDetails(!displayDetails)
-	}
+	const { displayDetails, setDisplayDetails, toggleDetails} = useDisplayDetails();
 
 	const time = moment(created_at).format('LT').split(' ');
 
 	const archiveCall = () => {
 		setDisplayDetails(false)
+		// filter for specific call
 		const toArchive = calls.filter(call => call.id === id)[0];
+		// find index of call
 		const index = calls.indexOf(toArchive);
-
+		// spread call and alter is_archived status
 		const alteredCall = [...calls][index];
 		alteredCall.is_archived = !alteredCall.is_archived;
-		const alteredCalls = calls;
+		// insert altered call back into spread calls list
+		const alteredCalls = [...calls];
 		alteredCalls[index] = alteredCall;
 
 		setState(prev => ({...prev, calls: alteredCalls}));
@@ -69,54 +70,7 @@ const CallsItem = (props) => {
 					<div className='am-pm'>{time[1]}</div>
 				</div>
 			</div>
-			{ displayDetails && 
-			<div className='call-detail'>
-				<div className='detail-header'>
-					<p className='call-id'>
-						Call ID: {id}
-						{ direction === 'outbound' && <img className="direction" src="https://img.icons8.com/ios/50/000000/outgoing-call.png"/>}
-						{ direction === 'inbound' && <img className="direction" src="https://img.icons8.com/ios/48/000000/incoming-call.png"/>}
-					</p>
-					<i className="far fa-times-circle"  style={{color: 'red'}} onClick={() => setDisplayDetails(false)}></i>
-				</div>
-				<div className='detail-content'>
-					<div className='detail-item'>
-						{ call_type === 'missed' && <p style={{backgroundColor: 'red'}} className='call-status'>Missed Call</p> }
-						{ call_type === 'voicemail' && <p style={{backgroundColor: 'gray'}} className='call-status'>Voicemail</p> }
-						{ direction === 'outbound' && call_type !== 'voicemail'&& call_type !== 'missed' && <p style={{backgroundColor: 'green'}} className='call-status'>Outbound Call</p> }
-						{ direction === 'inbound' && call_type !== 'voicemail'&& call_type !== 'missed' && <p style={{backgroundColor: 'blue'}} className='call-status'>Inbound Call</p> }
-						<div className='detail-date'>
-							<p>{moment(created_at).format('ll')}</p>
-							<p>{time}</p>
-							
-						</div>
-					</div>
-					<div className='detail-item'>
-						<p>Duration: {duration} minutes</p>
-						<p>Via: {via}</p>
-						
-					</div>
-				</div>
-				{/* Type: {call_type}
-				<br></br>
-				Created: {created_at}
-				<br></br>
-				Direction: {direction}
-				<br></br>
-				Duration: {duration}
-				<br></br>
-				From: {from}
-				
-				<br></br>
-				Is_Archived: {props.is_archived}
-				<br></br>
-				To: {to}
-				<br></br>
-				via: {via}	 */}
-			</div>
-			}
-			
-
+			{displayDetails && <CallDetails props={props} setDisplayDetails={setDisplayDetails}/>}
 		</div>
 	)
 }

@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import axios from 'axios';
+
+import useCallData from './Hooks/useCallData.js';
+
 import CallsList from './Components/CallsList.jsx';
 import Footer from './Components/Footer.jsx';
-
 import Header from './Header.jsx';
 
 const App = () => {
-	const [state, setState] = useState({
-		calls: []
-	})
-
-	useEffect(() => {
-		axios.get('https://aircall-job.herokuapp.com/activities')
-			.then((res) => {
-				setState((prev) => ({
-					...prev, calls: [...res.data]
-				}))
-			})
-	}, [])
-
+	const { state, setState } = useCallData();
 
   return (
     <div className='container'>
@@ -35,7 +24,5 @@ const App = () => {
     </div>
   );
 };
-
-
 
 export default App;

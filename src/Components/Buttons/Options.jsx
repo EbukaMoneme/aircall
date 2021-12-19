@@ -7,7 +7,7 @@ export default function Options(props) {
 	const [isActive, setisActive] = useState(false);
 
 	const toggleOptions = () => {
-		setisActive(!isActive)
+		setisActive(!isActive);
 	}
 
 	const listenForClicks = useCallback(() => {
@@ -15,18 +15,17 @@ export default function Options(props) {
   	if (!menuRef.current) return;
   	setListening(true);
 		
-	}, [setListening, listening, isActive, setisActive])
+	}, [setListening, listening, isActive, setisActive]);
 
 	const clickChecker = (evt) => {
 		if (menuRef.current && menuRef.current.contains(evt.target)) return;
 			setisActive(false);
-	}
+	};
 
 	useEffect(() => {
 		document.addEventListener(`click`, clickChecker);
 		return () => document.removeEventListener('click', clickChecker)
 	}, [setListening, listening, setisActive, isActive]);
-
 
 	return (
 		<div 
@@ -45,4 +44,4 @@ export default function Options(props) {
 				}
 			</div>
 	)
-}
+};

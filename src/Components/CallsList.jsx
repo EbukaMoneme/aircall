@@ -1,54 +1,24 @@
 import React from "react";
+// Components
 import CallsItem from "./CallsItem.jsx";
-import moment from 'moment';
+// Helpers
+import listCalls from "../Helpers/listCalls.js";
+import callView from "../Helpers/callView";
+import createDateElement from "../Helpers/createDateElement.js";
+import formatDate from "../Helpers/formatDate.js";
 
 const CallsList = (props) => {
 	const { calls, view, setState } = props;
 
-	const callView = (view) => {
-		let filter;
-		if (view == 'regular') {
-			filter = calls.filter(call => !call.is_archived)
-		}
-		if (view == 'archived') {
-			filter = calls.filter(call => call.is_archived)
-		}
-		if (view == 'missed') {
-			filter = calls.filter(call => call.call_type === 'missed' && !call.is_archived)
-		}
-		return filter;
-	}
-	const filteredCalls = callView(view)
+	// Filter calls by view
+	const filteredCalls = callView(view, calls)
 
-	const formatDate = (date) => {
-		return moment(date).format("ll")
-	}
-	
 	const uniqueDates = [...new Set(filteredCalls.map(call => formatDate(call.created_at)))]
-	const parsedCallsList = filteredCalls.map(call => <CallsItem {...call} setState={setState} calls={calls} key={calls.indexOf(call)} />);
+	const parsedCallsList = filteredCalls.map(call => {
+		return <CallsItem {...call} setState={setState} calls={calls} key={calls.indexOf(call)} />
+	});
 
-	const createDateElement = (date) => {
-		return (
-			<div className="date" key={Math.random()}>
-				<hr className="date-line"/>
-				<p>{date}</p>
-				<hr className="date-line"/>
-			</div>
-		)
-	}
-
-	const listCalls = () => {
-		let list = [];
-	
-		for (let date of uniqueDates) {
-			list.push(createDateElement(date))
-			let dateFilteredCalls = parsedCallsList.filter(call => formatDate(call.props.created_at) == date)
-
-			list.push(dateFilteredCalls)
-		}
-		return list;
-	}
-	const list = listCalls()
+	const list = listCalls(uniqueDates, parsedCallsList, formatDate, createDateElement)
 
 	return (
 		<div className="calls-list">
