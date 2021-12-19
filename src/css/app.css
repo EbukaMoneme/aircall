@@ -15,11 +15,13 @@
   z-index: 100;
 
   background: white;
+
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .9);
 }
 
 #app .container-view {
   padding: 5px 20px;
+	background-color: #f2f2f2;
 }
 

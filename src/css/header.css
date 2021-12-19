@@ -2,9 +2,11 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-  padding: 0 20px;
+  /* padding: 0 20px; */
 	height: 70px;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+	background-color: #f2f2f2;
+	border-bottom: 0.1px solid rgba(187, 187, 187, 0.488);
 }
 
 header svg {
@@ -23,6 +25,16 @@ header h1 {
 	align-items: center;
 	text-decoration: none;
 	color: black;
+	padding-left: 20px;
+	background-color: white;
+	height: 100%;
+}
+
+.separator {
+	width: 0.5em;
+	height: 0px;
+	border-top: 70px solid white;
+	border-right: 50px solid #f2f2f2;
 }
 
 .nav-list > .link {
@@ -38,6 +50,8 @@ header h1 {
 	justify-content: space-evenly;
 	align-items: center;
 	width: 60%;	
+	padding-right: 10px;
+
 }
 
 .link {

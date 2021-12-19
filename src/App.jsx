@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import CallsList from './Components/CallsList.jsx';
+import Footer from './Components/Footer.jsx';
 
 import Header from './Header.jsx';
 
@@ -30,6 +31,7 @@ const App = () => {
 					<Route path="/archived" element={<CallsList setState={setState} calls={state.calls} view={'archived'}/>} />
 				</Routes>
 			</div>
+			<Footer/>
     </div>
   );
 };

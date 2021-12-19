@@ -1,5 +1,5 @@
 .calls-list {
-	height: 550px;
+	height: 540px;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
@@ -20,6 +20,10 @@
 	align-items: center;
 	justify-content: space-evenly;
 	font-weight: bold;
-	color: #cecece;
+	color: #8a8a8a;
 	margin-bottom: -1.5em;
+}
+
+.space {
+	height: 4em;
 }

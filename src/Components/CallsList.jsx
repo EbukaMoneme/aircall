@@ -18,17 +18,14 @@ const CallsList = (props) => {
 		}
 		return filter;
 	}
-
 	const filteredCalls = callView(view)
-	console.log(filteredCalls)
-	console.log("unfiltered", calls)
 
 	const formatDate = (date) => {
 		return moment(date).format("ll")
 	}
 	
 	const uniqueDates = [...new Set(filteredCalls.map(call => formatDate(call.created_at)))]
-	const parsedCallsList = filteredCalls.map((call, index) => <CallsItem {...call} setState={setState} calls={calls} key={index} />);
+	const parsedCallsList = filteredCalls.map(call => <CallsItem {...call} setState={setState} calls={calls} key={calls.indexOf(call)} />);
 
 	const createDateElement = (date) => {
 		return (
@@ -51,12 +48,12 @@ const CallsList = (props) => {
 		}
 		return list;
 	}
-
 	const list = listCalls()
 
 	return (
 		<div className="calls-list">
 			{list}
+			<div className="space"/>
 		</div>
 	)
 }

@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 export default function Options(props) {
-	const { is_archived, archiveCall } = props;
+	const { is_archived, archiveCall, toggleDetails } = props;
 	const menuRef = useRef(null);
 	const [listening, setListening] = useState(false);
 	const [isActive, setisActive] = useState(false);
+
 	const toggleOptions = () => {
 		setisActive(!isActive)
 	}
@@ -21,7 +22,7 @@ export default function Options(props) {
 			if (menuRef.current && menuRef.current.contains(evt.target)) return;
 			setisActive(false);
   	});
-		return () => document.removeEventListener('click', setListening)
+		return () => document.removeEventListener('click', [menuRef, setListening])
 	}, [setListening, listening, menuRef, isActive]);
 
 
@@ -37,8 +38,8 @@ export default function Options(props) {
 					<div className='dropdown' >
 						{ is_archived && <button className="archive" onClick={archiveCall}>Unarchive</button>}
 						{ !is_archived && <button className="archive" onClick={archiveCall}>Archive</button>}
+						{ <button className="archive" onClick={toggleDetails}>Details</button>}
 					</div>
-					
 				}
 			</div>
 	)

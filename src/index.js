@@ -7,6 +7,7 @@ import './css/app.css';
 import './css/header.css';
 import './css/calls-item.css';
 import './css/calls-list.css';
+import './css/footer.css';
 
 import App from './App.jsx';
 

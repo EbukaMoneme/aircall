@@ -10,6 +10,7 @@ const Header = () => {
 				</svg>
 				<h1>Calls</h1>
 			</Link>
+			<div className='separator'></div>
 			<div className='nav-list'>
 				<NavLink 
 					to="/" 
@@ -49,7 +50,6 @@ const Header = () => {
 					Archived
 				</NavLink>
 			</div>
-	
     </header>
   );
 };
