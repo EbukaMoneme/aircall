@@ -59,8 +59,8 @@ const CallsItem = (props) => {
 					{call_type === 'voicemail' && <i className="fas fa-voicemail call-icon"></i>}
 					<div className='callers'>
 						<p className='sender'>{from}</p>
-						{call_type == 'answered' && <p className='receiver'>called {to}</p> }
-						{call_type == 'missed' && <p className='receiver'>tried to call {to}</p> }
+						{call_type == 'answered' && <p className='receiver'>called <span>{to}</span></p> }
+						{call_type == 'missed' && <p className='receiver'>tried to call <span>{to}</span></p> }
 					</div>
 				</div>
 				<div className='call-end'>

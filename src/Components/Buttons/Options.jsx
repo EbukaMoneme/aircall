@@ -17,13 +17,15 @@ export default function Options(props) {
 		
 	}, [setListening, listening, isActive, setisActive])
 
-	useEffect(() => {
-		document.addEventListener(`click`, (evt) => {
-			if (menuRef.current && menuRef.current.contains(evt.target)) return;
+	const clickChecker = (evt) => {
+		if (menuRef.current && menuRef.current.contains(evt.target)) return;
 			setisActive(false);
-  	});
-		return () => document.removeEventListener('click', [menuRef, setListening])
-	}, [setListening, listening, menuRef, isActive]);
+	}
+
+	useEffect(() => {
+		document.addEventListener(`click`, clickChecker);
+		return () => document.removeEventListener('click', clickChecker)
+	}, [setListening, listening, setisActive, isActive]);
 
 
 	return (
