@@ -1,5 +1,7 @@
 ## Summary
 
+The live link for this assessment can be found at: https://aircall-ebuka.netlify.app/
+
 The goal of this test is to make you code a small ReactJS app. We have prepared a skeleton app for you, but please change whatever you want (CSS files, HTML structure, JS structure, etc).
 
 The app will have two different components:
